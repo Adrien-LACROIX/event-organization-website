@@ -2,5 +2,5 @@
 
 interface ControllerInterface
 {
-    public function indexAction($request);
+    public function run();
 }

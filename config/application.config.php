@@ -1,6 +1,6 @@
 <?php
 //site name
-define('SITE_NAME', 'EVENTS.IO');
+define('SITE_NAME', 'E-Event.IO');
 
 //App Root
 define('APP_ROOT', dirname(dirname(__FILE__)));

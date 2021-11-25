@@ -5,37 +5,36 @@ ini_set('display_errors', '1');
 require '../config/application.config.php';
 require '../src/utils/Route.inc.php';
 
-include '../src/Controller/IndexController.php';
-
-require '../src/Model/DbConnectionManager.php';
-
-$db = new DbConnectionManager();
-$dbConnection = null;
-if ($db) {
-    $dbConnection = $db->getConnection();
-}
+include '../src/Controller/LandingPageController.php';
+include '../src/Controller/SignUpController.php';
+include '../src/Controller/SignInController.php';
 
 // Add base route (startpage)
 Route::add('/', function() {
-    $controller = new IndexController();
-    echo $controller->run();
+    $controller = new LandingPageController();
+    return $controller->run();
 });
 
-// Simple test route that simulates static html file
-Route::add('/test.html',function(){
-    echo 'Hello from test.html';
+Route::add('/sign-up',function() {
+    $controller = new SignUpController();
+    return $controller->run();
+});
+
+Route::add('/sign-in',function() {
+    $controller = new SignInController();
+    return $controller->run();
 });
 
 // Post route example
 Route::add('/contact-form',function(){
     echo '<form method="post"><input type="text" name="test" /><input type="submit" value="send" /></form>';
-},'get');
+}, 'get');
 
 // Post route example
 Route::add('/contact-form',function(){
     echo 'Hey! The form has been sent:<br/>';
     print_r($_POST);
-},'post');
+}, 'post');
 
 // Accept only numbers as parameter. Other characters will result in a 404 error
 Route::add('/foo/([0-9]*)/bar',function($var1){
