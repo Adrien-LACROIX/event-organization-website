@@ -66,4 +66,4 @@
       </div>
     </body>
 <?php $content = ob_get_clean(); ?>
-<?php require dirname(__FILE__) . '/../Layout/page.php'; ?>
+<?php require dirname(__FILE__) . '/../Layout/page-blank.php'; ?>
